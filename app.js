@@ -1,28 +1,16 @@
 // var commandLineArgs = process.argv;
 // console.log(commandLineArgs);
 
-const profileDataArgs = process.argv.slice(2, process.argv.length);
-console.log(profileDataArgs);
+const fs = require('fs')
+const generatePage = require('./src/page-template.js');
 
-const printProfileData = profileDataArr => {
-    // This...
-    for (let i = 0; i < profileDataArr.length; i++) {
-        console.log(profileDataArr[i]);
-    }
+const profileDataArgs = process.argv.slice(2);
 
-    console.log('==============')
+const [name, github] = profileDataArgs;
 
-    // Is the same as this...
-    profileDataArr.forEach(profileItem => console.log(profileItem));
+fs.writeFile('./index.html', generatePage(name, github), err => {
+    if (err) throw new Error(err);
+    
+    console.log('Portfolio complete! Check out index.html to see the output!');
+});
 
-printProfileData(profileDataArgs);
-
-// using function expression syntax
-// const addNums = function(numOne, numTwo) {
-//     return numOne + numTwo;
-// };
-
-// using arrow function syntax
-// const addNums = (numOne + numTwo) => {
-//     return numOne + numTwo;
-// }

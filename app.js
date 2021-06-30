@@ -20,14 +20,13 @@ const promptUser = () => {
     ]);
 };
 
-promptUser().then(answers => console.log(answers));
-
 const promptProject = portfolioData => {
     console.log(`
 ==============
 Add a New Project
 ==============
 `);
+
 // If there's no 'projects' array property, create one
 if (!portfolioData.projects) {
 portfolioData.projects = [];
@@ -45,7 +44,7 @@ portfolioData.projects = [];
             message: 'Provide a description of the project (Required)'
         },
         {
-            type: 'input',
+            type: 'checkbox',
             name: 'languages',
             message: 'What did you build this project with? (Check all that apply)',
             choices: ['Javascript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
@@ -82,6 +81,7 @@ promptUser()
     .then(answers => console.log(answers))
     .then(promptProject)
     .then(projectAnswers => console.log(projectAnswers));
+
 // const fs = require('fs')
 // const generatePage = require('./src/page-template.js');
 

@@ -22,15 +22,15 @@ const promptUser = () => {
 
 const promptProject = portfolioData => {
     console.log(`
-==============
-Add a New Project
-==============
-`);
+    ==============
+    Add a New Project
+    ==============
+    `);
 
-// If there's no 'projects' array property, create one
-if (!portfolioData.projects) {
-portfolioData.projects = [];
-}
+    // If there's no 'projects' array property, create one
+    if (!portfolioData.projects) {
+    portfolioData.projects = [];
+    }
 
     return inquirer.prompt([
         {
@@ -78,9 +78,10 @@ portfolioData.projects = [];
 };
 
 promptUser()
-    .then(answers => console.log(answers))
     .then(promptProject)
-    .then(projectAnswers => console.log(projectAnswers));
+    .then(portfolioData => {
+        console.log(portfolioData);
+    });
 
 // const fs = require('fs')
 // const generatePage = require('./src/page-template.js');
